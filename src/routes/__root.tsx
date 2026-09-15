@@ -91,12 +91,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         property: "og:description",
         content: "رعاية شاملة للأسنان في بيئة مريحة واهتمام شخصي بكل حالة.",
       },
-      { property: "og:url", content: "https://al-amal-dental-clinic.vercel.app/" },
       { property: "og:type", content: "website" },
-      {
-        property: "og:image",
-        content: "https://al-amal-dental-clinic.vercel.app/og-image.jpg",
-      },
+      { property: "og:image", content: "/og-image.jpg" },
       { property: "og:locale", content: "ar_PS" },
       { property: "og:locale:alternate", content: "en_US" },
       { name: "twitter:card", content: "summary" },
