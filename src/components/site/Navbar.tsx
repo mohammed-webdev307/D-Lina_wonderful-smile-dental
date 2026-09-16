@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Globe, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/lib/i18n";
-import { ToothMark } from "./ToothMark";
+import logoImage from "@/assets/wonderful-smile-logo.png.png";
 
 const links = [
   ["/", "home"],
@@ -20,12 +20,7 @@ export function Navbar({ homePage = false }: { homePage?: boolean }) {
     <header className={`sticky top-0 z-50 border-b backdrop-blur-xl ${homePage ? "border-[#F4B8C2]/35 bg-transparent" : "border-border/70 bg-background/90"}`}>
       <div className="mx-auto flex min-h-[78px] w-full max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex min-w-0 items-center gap-2" onClick={() => setOpen(false)}>
-          <ToothMark className="h-10 w-10 shrink-0 stroke-[2.2] text-[#A94F69]" />
-          <span className="flex min-w-0 flex-col leading-none">
-            <span className="text-[17px] font-bold text-[#713B49] sm:text-lg">{t.brand.primary}</span>
-            <span className="mt-1 text-[11px] font-semibold text-[#B45F76]">{t.brand.secondary}</span>
-            <span className="mt-1 font-latin text-[9px] font-medium tracking-[0.08em] text-[#765A62]">Wonderful Smile Dental Clinic</span>
-          </span>
+          <img src={logoImage} alt={t.brand.name} className="h-[56px] w-[200px] max-w-[calc(100vw-150px)] object-contain sm:h-[62px] sm:w-[300px]" />
         </Link>
 
         <nav aria-label={t.nav.home} className="mx-auto hidden items-center gap-1 lg:flex">
