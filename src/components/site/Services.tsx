@@ -7,6 +7,7 @@ import dentureImage from "@/assets/denture.png";
 import extractionImage from "@/assets/extraction.png";
 import fillingsImage from "@/assets/fillings.png";
 import rootCanalImage from "@/assets/root-canal.png";
+import cleaningImage from "@/assets/cleaning.png";
 
 const serviceImages: Record<ServiceKey, string> = {
   denture: dentureImage,
@@ -14,6 +15,7 @@ const serviceImages: Record<ServiceKey, string> = {
   fillings: fillingsImage,
   extraction: extractionImage,
   children: childrenImage,
+  cleaning: cleaningImage,
 };
 
 const serviceIcons: Record<ServiceKey, LucideIcon> = {
@@ -22,6 +24,7 @@ const serviceIcons: Record<ServiceKey, LucideIcon> = {
   fillings: Sparkles,
   extraction: CheckCircle2,
   children: HeartHandshake,
+  cleaning: Sparkles,
 };
 
 const servicePageFeatures = [

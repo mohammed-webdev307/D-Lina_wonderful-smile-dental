@@ -10,7 +10,7 @@ export const FACEBOOK_NAME = "-----";
 export const MAPS_URL = "https://www.google.com/maps?q=31.355090,34.301244";
 export const MAPS_EMBED_URL = "https://www.google.com/maps?q=31.355090,34.301244&output=embed";
 
-export const serviceKeys = ["denture", "rootcanal", "fillings", "extraction", "children"] as const;
+export const serviceKeys = ["denture", "rootcanal", "fillings", "extraction", "children", "cleaning"] as const;
 export type ServiceKey = (typeof serviceKeys)[number];
 
 type Dict = {
@@ -133,21 +133,26 @@ const ar: Dict = {
         desc: "حل تعويضي للحالات التي تحتاج إلى طقم أسنان متحرك كامل بعد التقييم المناسب للحالة.",
       },
       rootcanal: {
-        title: "سحب عصب الأسنان الأمامية",
-        desc: "التعامل مع الحالات المناسبة التي تحتاج إلى علاج عصب الأسنان الأمامية بعد الفحص والتقييم.",
+        title: "سحب عصب الأسنان ",
+        desc: "التعامل مع الحالات المناسبة التي تحتاج إلى علاج عصب الأسنان  بعد الفحص والتقييم.",
       },
       fillings: {
         title: "إزالة التسوسات وترميم الأسنان",
         desc: "إزالة التسوس وترميم الأسنان بهدف الحفاظ على صحة السن واستعادة وظيفته ومظهره.",
       },
       extraction: {
-        title: "خلع الأسنان الأمامية",
+        title: "خلع الأسنان ",
         desc: "إجراء الخلع للحالات التي تستدعي ذلك بعد التقييم السريري وتحديد الخطة المناسبة.",
       },
       children: {
-        title: "علاج أسنان الأطفال",
-        desc: "استقبال حالات الأطفال المناسبة وتقديم العناية اللازمة ضمن بيئة مريحة وتحت الإشراف الطبي.",
-      },
+  title: "علاج أسنان الأطفال",
+  desc: "استقبال حالات الأطفال المناسبة وتقديم العناية اللازمة ضمن بيئة مريحة وتحت الإشراف الطبي.",
+},
+cleaning: {
+  title: "تنظيف الأسنان وإزالة الجير",
+  desc: "تنظيف الأسنان وإزالة الجير والترسبات للمساعدة في الحفاظ على صحة الأسنان واللثة ونظافة الفم.",
+},
+      
     },
     other: "استفسار آخر",
   },
@@ -285,22 +290,26 @@ const en: Dict = {
         title: "Complete removable denture",
         desc: "A prosthetic solution for cases that require a complete removable denture after proper case assessment.",
       },
-      rootcanal: {
-        title: "Root canal for front teeth",
-        desc: "Handling suitable cases that require root canal treatment of the front teeth after examination and assessment.",
-      },
+     rootcanal: {
+  title: "Root Canal Treatment",
+  desc: "Treatment for suitable cases that require root canal therapy after examination and assessment.",
+},
       fillings: {
         title: "Caries removal and restorations",
         desc: "Removing decay and restoring teeth to preserve tooth health and recover its function and appearance.",
       },
       extraction: {
-        title: "Front teeth extraction",
-        desc: "Extraction for cases that require it after clinical assessment and defining the suitable plan.",
-      },
+  title: "Tooth Extraction",
+  desc: "Extraction for cases that require it after clinical assessment and defining the suitable plan.",
+},
       children: {
-        title: "Children's dental care",
-        desc: "Receiving suitable pediatric cases and providing the needed care in a comfortable setting under medical supervision.",
-      },
+  title: "Children's dental care",
+  desc: "Receiving suitable pediatric cases and providing the needed care in a comfortable setting under medical supervision.",
+},
+cleaning: {
+  title: "Teeth Cleaning & Tartar Removal",
+  desc: "Professional teeth cleaning and tartar removal to help maintain healthy teeth, gums, and oral hygiene.",
+},
     },
     other: "Other inquiry",
   },
