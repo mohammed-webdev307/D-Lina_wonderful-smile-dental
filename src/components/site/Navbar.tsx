@@ -1,133 +1,68 @@
-import { useEffect, useState } from "react";
-import { Menu, X, Globe } from "lucide-react";
-import { useLanguage, scrollToSection } from "@/lib/i18n";
+import { Link } from "@tanstack/react-router";
+import { Globe, Menu, X } from "lucide-react";
+import { useState } from "react";
+import { useLanguage } from "@/lib/i18n";
 import { ToothMark } from "./ToothMark";
 
-const sections = ["home", "about", "services", "why", "faq", "contact"] as const;
+const links = [
+  ["/", "home"],
+  ["/about", "about"],
+  ["/services", "services"],
+  ["/booking", "book"],
+  ["/faq", "faq"],
+] as const;
 
-export function Navbar() {
+export function Navbar({ homePage = false }: { homePage?: boolean }) {
   const { t, lang, setLang } = useLanguage();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const go = (id: string) => {
-    setOpen(false);
-    scrollToSection(id);
-  };
-
-  const labels: Record<(typeof sections)[number], string> = {
-    home: t.nav.home,
-    about: t.nav.about,
-    services: t.nav.services,
-    why: t.nav.why,
-    faq: t.nav.faq,
-    contact: t.nav.contact,
-  };
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background/90 shadow-[0_2px_20px_-12px_rgba(39,50,58,0.35)] backdrop-blur"
-          : "bg-background/70 backdrop-blur-sm"
-      }`}
-    >
-      <div className="mx-auto flex h-[78px] w-full max-w-7xl items-center gap-4 px-4 sm:px-6 lg:h-[84px] lg:px-8">
-        <button
-          type="button"
-          onClick={() => go("home")}
-          className="flex min-w-0 shrink-0 items-center gap-2 rounded-xl py-1 text-start"
-          aria-label={t.brand.name}
-        >
-          <ToothMark className="h-9 w-9 shrink-0 text-primary sm:h-8 sm:w-8" />
+    <header className={`sticky top-0 z-50 border-b backdrop-blur-xl ${homePage ? "border-[#F4B8C2]/35 bg-transparent" : "border-border/70 bg-background/90"}`}>
+      <div className="mx-auto flex min-h-[78px] w-full max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
+        <Link to="/" className="flex min-w-0 items-center gap-2" onClick={() => setOpen(false)}>
+          <ToothMark className="h-10 w-10 shrink-0 stroke-[2.2] text-[#A94F69]" />
           <span className="flex min-w-0 flex-col leading-none">
-            <span className="font-latin text-[21px] font-extrabold tracking-[0.2em] text-foreground sm:text-xl">
-              {t.brand.primary}
-            </span>
-            <span className="mt-0.5 text-[11px] font-semibold text-primary sm:text-xs">
-              {t.brand.secondary}
-            </span>
-            <span className="mt-1 text-[10px] font-medium text-muted-foreground sm:text-[11px]">
-              {t.brand.doctor}
-            </span>
+            <span className="text-[17px] font-bold text-[#713B49] sm:text-lg">{t.brand.primary}</span>
+            <span className="mt-1 text-[11px] font-semibold text-[#B45F76]">{t.brand.secondary}</span>
+            <span className="mt-1 font-latin text-[9px] font-medium tracking-[0.08em] text-[#765A62]">Wonderful Smile Dental Clinic</span>
           </span>
-        </button>
+        </Link>
 
-        <nav aria-label={t.nav.home} className="mx-auto hidden items-center gap-2 lg:flex">
-          {sections.map((s) => (
-            <button
-              key={s}
-              type="button"
-              onClick={() => go(s)}
-              className="rounded-full px-4 py-2.5 text-[15px] font-semibold text-muted-foreground transition-colors hover:bg-soft hover:text-foreground"
-            >
-              {labels[s]}
-            </button>
+        <nav aria-label={t.nav.home} className="mx-auto hidden items-center gap-1 lg:flex">
+          {links.map(([to, key]) => (
+            <Link key={to} to={to} className={`rounded-full px-3 py-2.5 text-sm font-semibold transition-colors ${homePage ? "text-white hover:bg-white/10 hover:text-white" : "text-muted-foreground hover:bg-soft hover:text-foreground"}`}>
+              {t.nav[key]}
+            </Link>
           ))}
+          <Link to="/booking" hash="contact" className={`rounded-full px-3 py-2.5 text-sm font-semibold transition-colors ${homePage ? "text-white hover:bg-white/10 hover:text-white" : "text-muted-foreground hover:bg-soft hover:text-foreground"}`}>
+            {t.nav.contact}
+          </Link>
         </nav>
 
-        <div className="ms-auto flex items-center gap-2 lg:ms-0">
-          <button
-            type="button"
-            onClick={() => setLang(lang === "ar" ? "en" : "ar")}
-            className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-2 text-xs font-semibold text-foreground transition-colors hover:bg-soft"
-            aria-label={lang === "ar" ? "Switch to English" : "التبديل إلى العربية"}
-          >
-            <Globe className="h-4 w-4 text-primary" aria-hidden="true" />
-            <span className="font-latin">{lang === "ar" ? "EN" : "العربية"}</span>
+        <div className="ms-auto flex items-center gap-2">
+          <button type="button" onClick={() => setLang(lang === "ar" ? "en" : "ar")} className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-2 text-xs font-semibold ${homePage ? "border-[#F4B8C2]/60 bg-[#F4B8C2] text-[#6F3440] hover:bg-[#f8c5cd]" : "border-border text-foreground hover:bg-soft"}`} aria-label={lang === "ar" ? "Switch to English" : "التبديل إلى العربية"}>
+            <Globe className={`h-4 w-4 ${homePage ? "text-[#6F3440]" : "text-primary"}`} aria-hidden="true" />
+            <span className="font-latin">{lang === "ar" ? "EN" : "AR"}</span>
           </button>
-
-          <button
-            type="button"
-            onClick={() => go("contact")}
-            className="hidden rounded-full bg-primary px-6 py-3 text-[15px] font-bold text-primary-foreground shadow-[0_10px_24px_-14px_rgba(201,143,150,0.9)] transition-transform hover:-translate-y-0.5 sm:inline-flex"
-          >
+          <Link to="/booking" className={`hidden rounded-full px-5 py-3 text-sm font-bold shadow-[0_12px_24px_-16px_#c27a86] transition-transform hover:-translate-y-0.5 sm:inline-flex ${homePage ? "bg-[#F3B0BC] text-[#6F3440] hover:bg-[#f8c5cd]" : "bg-primary text-primary-foreground"}`}>
             {t.nav.book}
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            className="inline-flex items-center justify-center rounded-full border border-border p-2 text-foreground lg:hidden"
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            aria-label={open ? t.nav.close : t.nav.menu}
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </Link>
+          <button type="button" onClick={() => setOpen((value) => !value)} className="inline-flex rounded-full border border-[rgba(113,59,73,0.20)] bg-[rgba(255,255,255,0.75)] p-2 text-[#713B49] shadow-[0_3px_10px_rgba(83,35,50,0.10)] transition-colors hover:bg-[#F4DDE3] active:bg-[#F4DDE3] lg:hidden" aria-expanded={open} aria-controls="mobile-nav" aria-label={open ? t.nav.close : t.nav.menu}>
+            {open ? <X className="h-5 w-5 stroke-[2.4]" /> : <Menu className="h-5 w-5 stroke-[2.4]" />}
           </button>
         </div>
       </div>
 
-      <div
-        id="mobile-nav"
-        hidden={!open}
-        className="border-t border-border bg-background lg:hidden"
-      >
-        <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3 sm:px-6 lg:px-8">
-          {sections.map((s) => (
-            <button
-              key={s}
-              type="button"
-              onClick={() => go(s)}
-              className="rounded-xl px-3 py-3 text-start text-sm font-medium text-foreground transition-colors hover:bg-soft"
-            >
-              {labels[s]}
-            </button>
+      <div id="mobile-nav" hidden={!open} className={`border-t lg:hidden ${homePage ? "border-[#F4B8C2]/35 bg-[#7D3F4C]" : "border-border bg-background"}`}>
+        <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3 sm:px-6">
+          {links.map(([to, key]) => (
+            <Link key={to} to={to} onClick={() => setOpen(false)} className={`rounded-xl px-3 py-3 text-start text-sm font-semibold ${homePage ? "text-white hover:bg-white/10" : "text-foreground hover:bg-soft"}`}>
+              {t.nav[key]}
+            </Link>
           ))}
-          <button
-            type="button"
-            onClick={() => go("contact")}
-            className="mt-1 rounded-full bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground"
-          >
+          <Link to="/booking" onClick={() => setOpen(false)} className={`mt-1 rounded-full px-4 py-3 text-center text-sm font-bold ${homePage ? "bg-[#F3B0BC] text-[#6F3440]" : "bg-primary text-primary-foreground"}`}>
             {t.nav.book}
-          </button>
+          </Link>
         </nav>
       </div>
     </header>

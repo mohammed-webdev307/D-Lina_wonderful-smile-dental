@@ -8,7 +8,7 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="scroll-mt-20 py-8 md:py-[60px] lg:py-20">
+    <section id="faq" className="page-faq scroll-mt-20 py-8 md:py-[60px] lg:py-20">
       <div className="mx-auto w-full max-w-[900px] px-4 sm:px-6">
         <Reveal>
           <h2 className="text-center text-2xl font-extrabold text-foreground sm:text-4xl lg:text-[42px]">

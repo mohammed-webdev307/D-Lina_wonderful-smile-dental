@@ -78,15 +78,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "عيادة الأمل لطب الأسنان | Al Amal Dental Clinic" },
+      { title: "عيادة البسمة الرائعة لطب الأسنان | Wonderful Smile Dental Clinic" },
       {
         name: "description",
         content:
-          "عيادة الأمل لطب الأسنان تقدم رعاية متكاملة لصحة وجمال الأسنان في بيئة مريحة واهتمام شخصي بكل حالة.",
+          "عيادة البسمة الرائعة لطب الأسنان تقدم رعاية متكاملة لصحة وجمال الأسنان في بيئة مريحة واهتمام شخصي بكل حالة.",
       },
-      { name: "author", content: "Al Amal Dental Clinic - Dr. Lina Mahmoud" },
-      { name: "theme-color", content: "#C98F96" },
-      { property: "og:title", content: "عيادة الأمل لطب الأسنان | Al Amal Dental Clinic" },
+      { name: "author", content: "Wonderful Smile Dental Clinic - Dr. Lina Mahmoud" },
+      { name: "theme-color", content: "#D89CA4" },
+      { property: "og:title", content: "عيادة البسمة الرائعة لطب الأسنان | Wonderful Smile Dental Clinic" },
       {
         property: "og:description",
         content: "رعاية شاملة للأسنان في بيئة مريحة واهتمام شخصي بكل حالة.",

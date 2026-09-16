@@ -9,7 +9,7 @@ export function AppointmentCTA() {
     <section className="py-6 md:py-10">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
-          <div className="flex min-h-[176px] flex-col justify-center rounded-[2rem] bg-[linear-gradient(110deg,oklch(0.69_0.055_12),oklch(0.76_0.066_12))] px-5 py-7 text-center sm:min-h-[220px] sm:px-12 sm:py-14">
+          <div className="flex min-h-[176px] flex-col justify-center rounded-[2rem] bg-[linear-gradient(110deg,#c27a86,#d89ca4)] px-5 py-7 text-center sm:min-h-[220px] sm:px-12 sm:py-14">
             <h2 className="mx-auto max-w-3xl text-2xl font-extrabold leading-relaxed text-primary-foreground sm:text-4xl">
               {t.cta.heading}
             </h2>

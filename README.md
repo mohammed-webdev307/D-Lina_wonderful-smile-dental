@@ -1,11 +1,11 @@
-# Al Amal Dental Clinic
+# Wonderful Smile Dental Clinic
 
-موقع عيادة الأمل لطب الأسنان، باللغتين العربية والإنجليزية، مع دعم RTL/LTR.
+موقع عيادة البسمة الرائعة لطب الأسنان، باللغتين العربية والإنجليزية، مع دعم RTL/LTR.
 
 ## الهوية
 
-- عيادة الأمل لطب الأسنان
-- Al Amal Dental Clinic
+- عيادة البسمة الرائعة لطب الأسنان
+- Wonderful Smile Dental Clinic
 - د. لينا محمود
 - Dr. Lina Mahmoud
 

@@ -6,7 +6,7 @@ export function Location() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-12 md:py-[60px] lg:py-20" aria-labelledby="location-heading">
+    <section className="page-location py-12 md:py-[60px] lg:py-20" aria-labelledby="location-heading">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
           <div className="relative overflow-hidden rounded-[2rem] border border-border bg-card p-4 sm:p-6">

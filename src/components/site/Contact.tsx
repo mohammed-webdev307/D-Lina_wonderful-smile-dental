@@ -22,7 +22,10 @@ export function Contact({ selectedService }: ContactProps) {
   const { t, lang } = useLanguage();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [service, setService] = useState<ServiceKey | "other" | "">(selectedService);
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
   const [message, setMessage] = useState("");
   const [consent, setConsent] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
@@ -59,7 +62,7 @@ export function Contact({ selectedService }: ContactProps) {
         label: t.contact.location,
         value: t.contact.locationValue,
       },
-    ],
+    ].filter(({ value }) => value !== "-----"),
     [t],
   );
 
@@ -84,7 +87,10 @@ export function Contact({ selectedService }: ContactProps) {
       "",
       `الاسم: ${name.trim()}`,
       `رقم الهاتف: ${phone.trim()}`,
+      `البريد الإلكتروني: ${email.trim() || "-"}`,
       `الخدمة: ${serviceName}`,
+      `التاريخ المقترح: ${date || "-"}`,
+      `الوقت المقترح: ${time || "-"}`,
       `الاستفسار: ${message.trim()}`,
     ].join("\n");
     window.open(
@@ -99,7 +105,10 @@ export function Contact({ selectedService }: ContactProps) {
   const resetForm = () => {
     setName("");
     setPhone("");
+    setEmail("");
     setService(selectedService || "");
+    setDate("");
+    setTime("");
     setMessage("");
     setConsent(false);
     setErrors({});
@@ -107,7 +116,7 @@ export function Contact({ selectedService }: ContactProps) {
   };
 
   return (
-    <section id="contact" className="scroll-mt-20 bg-soft/40 py-8 md:py-[60px] lg:py-20">
+    <section id="contact" className="page-contact scroll-mt-20 py-8 md:py-[60px] lg:py-20">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
           <div className="max-w-2xl">
@@ -180,7 +189,7 @@ export function Contact({ selectedService }: ContactProps) {
                     <button
                       type="button"
                       onClick={resetForm}
-                      className="rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-background"
+                      className="rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-card-foreground transition-colors hover:bg-soft"
                     >
                       {t.form.again}
                     </button>
@@ -203,7 +212,7 @@ export function Contact({ selectedService }: ContactProps) {
                         onChange={(e) => setName(e.target.value)}
                         aria-invalid={Boolean(errors.name)}
                         aria-describedby={errors.name ? "name-error" : undefined}
-                        className="min-h-12 w-full rounded-2xl border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 sm:min-h-0"
+                        className="min-h-12 w-full rounded-2xl border border-input bg-card px-4 py-3 text-sm text-card-foreground placeholder:text-muted-foreground/70 sm:min-h-0"
                       />
                     </Field>
 
@@ -219,8 +228,12 @@ export function Contact({ selectedService }: ContactProps) {
                         onChange={(e) => setPhone(e.target.value)}
                         aria-invalid={Boolean(errors.phone)}
                         aria-describedby={errors.phone ? "phone-error" : undefined}
-                        className="min-h-12 w-full rounded-2xl border border-input bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 sm:min-h-0"
+                        className="min-h-12 w-full rounded-2xl border border-input bg-card px-4 py-3 text-sm text-card-foreground placeholder:text-muted-foreground/70 sm:min-h-0"
                       />
+                    </Field>
+
+                    <Field label={t.form.email} htmlFor="email-address">
+                      <input id="email-address" name="email" type="email" autoComplete="email" dir="ltr" value={email} onChange={(e) => setEmail(e.target.value)} className="min-h-12 w-full rounded-2xl border border-input bg-card px-4 py-3 text-sm text-card-foreground placeholder:text-muted-foreground/70 sm:min-h-0" />
                     </Field>
                   </div>
 
@@ -232,7 +245,7 @@ export function Contact({ selectedService }: ContactProps) {
                       onChange={(e) => setService(e.target.value as ServiceKey | "other" | "")}
                       aria-invalid={Boolean(errors.service)}
                       aria-describedby={errors.service ? "service-error" : undefined}
-                      className="min-h-12 w-full rounded-2xl border border-input bg-background px-4 py-3 text-sm text-foreground sm:min-h-0"
+                      className="min-h-12 w-full rounded-2xl border border-input bg-card px-4 py-3 text-sm text-card-foreground sm:min-h-0"
                     >
                       <option value="">{t.form.servicePlaceholder}</option>
                       {serviceKeys.map((key) => (
@@ -244,6 +257,15 @@ export function Contact({ selectedService }: ContactProps) {
                     </select>
                   </Field>
 
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <Field label={t.form.date} htmlFor="preferred-date">
+                      <input id="preferred-date" name="date" type="date" value={date} onChange={(e) => setDate(e.target.value)} className="min-h-12 w-full rounded-2xl border border-input bg-card px-4 py-3 text-sm text-card-foreground sm:min-h-0" />
+                    </Field>
+                    <Field label={t.form.time} htmlFor="preferred-time">
+                      <input id="preferred-time" name="time" type="time" value={time} onChange={(e) => setTime(e.target.value)} className="min-h-12 w-full rounded-2xl border border-input bg-card px-4 py-3 text-sm text-card-foreground sm:min-h-0" />
+                    </Field>
+                  </div>
+
                   <Field label={t.form.message} htmlFor="message">
                     <textarea
                       id="message"
@@ -251,12 +273,12 @@ export function Contact({ selectedService }: ContactProps) {
                       rows={5}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      className="w-full resize-y rounded-2xl border border-input bg-background px-4 py-3 text-sm leading-6 text-foreground placeholder:text-muted-foreground/70"
+                      className="w-full resize-y rounded-2xl border border-input bg-card px-4 py-3 text-sm leading-6 text-card-foreground placeholder:text-muted-foreground/70"
                     />
                   </Field>
 
                   <div>
-                    <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-border bg-background p-4 text-sm leading-6 text-foreground">
+                    <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-border bg-card p-4 text-sm leading-6 text-card-foreground">
                       <input
                         type="checkbox"
                         checked={consent}
@@ -278,11 +300,11 @@ export function Contact({ selectedService }: ContactProps) {
                     type="submit"
                     className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_14px_30px_-18px_rgba(201,143,150,1)] transition-transform hover:-translate-y-0.5 sm:w-auto"
                   >
-                    <Send
+                      <Send
                       className={`h-4 w-4 ${lang === "ar" ? "-scale-x-100" : ""}`}
                       aria-hidden="true"
                     />
-                    {t.form.submit}
+                      {t.form.submit}
                   </button>
                 </form>
               )}

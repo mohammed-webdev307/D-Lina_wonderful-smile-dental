@@ -66,7 +66,10 @@ type Dict = {
     heading: string;
     name: string;
     phone: string;
+    email: string;
     service: string;
+    date: string;
+    time: string;
     servicePlaceholder: string;
     message: string;
     consent: string;
@@ -84,8 +87,8 @@ type Dict = {
 const ar: Dict = {
   dir: "rtl",
   brand: {
-    name: "عيادة الأمل لطب الأسنان",
-    primary: "عيادة الأمل",
+    name: "عيادة البسمة الرائعة لطب الأسنان",
+    primary: "عيادة البسمة الرائعة",
     secondary: "لطب الأسنان",
     doctor: "د. لينا محمود",
   },
@@ -104,7 +107,7 @@ const ar: Dict = {
     eyebrow: "عناية بأسنانك بابتسامة أجمل",
     titleA: "ابتسامتك تستحق",
     titleB: "عناية مميزة",
-    desc: "في عيادة الأمل لطب الأسنان، نهتم بصحة ابتسامتك ونوفر لك رعاية مريحة وخدمات متكاملة تناسب احتياجاتك.",
+    desc: "في عيادة البسمة الرائعة لطب الأسنان، نهتم بصحة ابتسامتك ونوفر لك رعاية مريحة وخدمات متكاملة تناسب احتياجاتك.",
     book: "احجز موعدك",
     call: "اتصل الآن",
     trust: ["عناية واهتمام", "إشراف طبي", "بيئة علاجية مريحة"],
@@ -115,8 +118,8 @@ const ar: Dict = {
     sub: "فقط خدمة فتح ملف: 30 شيكل",
   },
   about: {
-    heading: "عيادة الأمل لطب الأسنان",
-    text: "عيادة الأمل لطب الأسنان تقدم رعاية متكاملة لصحة وجمال الأسنان في بيئة مريحة واهتمام شخصي بكل حالة. نحرص على تقديم خدمات علاجية ووقائية متنوعة مع التركيز على راحة المريض، وضوح الخطة العلاجية، والاهتمام بأدق التفاصيل للوصول إلى ابتسامة صحية وواثقة.",
+    heading: "عيادة البسمة الرائعة لطب الأسنان",
+    text: "عيادة البسمة الرائعة لطب الأسنان تقدم رعاية متكاملة لصحة وجمال الأسنان في بيئة مريحة واهتمام شخصي بكل حالة. نحرص على تقديم خدمات علاجية ووقائية متنوعة مع التركيز على راحة المريض، وضوح الخطة العلاجية، والاهتمام بأدق التفاصيل للوصول إلى ابتسامة صحية وواثقة.",
     cards: ["اهتمام بالمريض", "إشراف طبي مختص", "بيئة علاجية منظمة"],
     imageAlt: "أدوات طب أسنان معقمة على صينية بيضاء",
   },
@@ -169,7 +172,7 @@ const ar: Dict = {
     items: [
       {
         q: "أين يتم استقبال الحالات؟",
-        a: "يتم استقبال الحالات في عيادة الأمل لطب الأسنان. يمكن فتح موقع العيادة مباشرة من الخريطة الموجودة في الموقع.",
+        a: "يتم استقبال الحالات في عيادة البسمة الرائعة لطب الأسنان. يمكن فتح موقع العيادة مباشرة من الخريطة الموجودة في الموقع.",
       },
       {
         q: "هل العلاجات مجانية؟",
@@ -195,13 +198,16 @@ const ar: Dict = {
     instagram: "-----",
     facebook: "Facebook",
     location: "الموقع",
-    locationValue: "عيادة الأمل لطب الأسنان",
+    locationValue: "عيادة البسمة الرائعة لطب الأسنان",
   },
   form: {
     heading: "أرسل استفسارك",
     name: "الاسم الكامل",
     phone: "رقم الهاتف",
+    email: "البريد الإلكتروني",
     service: "نوع الخدمة",
+    date: "التاريخ المقترح",
+    time: "الوقت المقترح",
     servicePlaceholder: "اختر الخدمة",
     message: "اكتب استفسارك",
     consent: "أوافق على إرسال بياناتي لغرض التواصل بخصوص الموعد.",
@@ -224,7 +230,7 @@ const ar: Dict = {
   footer: {
     links: "روابط",
     contact: "التواصل",
-    rights: "© 2026 عيادة الأمل لطب الأسنان. All rights reserved.",
+    rights: "© 2026 عيادة البسمة الرائعة لطب الأسنان. All rights reserved.",
     disclaimer:
       "المعلومات الموجودة في الموقع لأغراض التعريف بالخدمات والتواصل ولا تغني عن التقييم الطبي المباشر.",
   },
@@ -234,8 +240,8 @@ const ar: Dict = {
 const en: Dict = {
   dir: "ltr",
   brand: {
-    name: "Al Amal Dental Clinic",
-    primary: "AL AMAL",
+    name: "Wonderful Smile Dental Clinic",
+    primary: "Wonderful Smile",
     secondary: "Dental Clinic",
     doctor: "Dr. Lina Mahmoud",
   },
@@ -254,7 +260,7 @@ const en: Dict = {
     eyebrow: "Dental care for a brighter smile",
     titleA: "Your smile deserves",
     titleB: "special care",
-    desc: "At Al Amal Dental Clinic, we care for your smile and provide comfortable care and comprehensive services suited to your needs.",
+    desc: "At Wonderful Smile Dental Clinic, we care for your smile and provide comfortable care and comprehensive services suited to your needs.",
     book: "Book an appointment",
     call: "Call now",
     trust: ["Care and attention", "Medical supervision", "Comfortable clinical setting"],
@@ -265,8 +271,8 @@ const en: Dict = {
     sub: "File opening service only: 30 ILS",
   },
   about: {
-    heading: "Al Amal Dental Clinic",
-    text: "Al Amal Dental Clinic provides comprehensive care for dental health and beauty in a comfortable environment with personal attention to every case. We offer a range of preventive and treatment services, focusing on patient comfort, clear treatment planning, and attention to detail for a healthy, confident smile.",
+    heading: "Wonderful Smile Dental Clinic",
+    text: "Wonderful Smile Dental Clinic provides comprehensive care for dental health and beauty in a comfortable environment with personal attention to every case. We offer a range of preventive and treatment services, focusing on patient comfort, clear treatment planning, and attention to detail for a healthy, confident smile.",
     cards: ["Patient attention", "Specialized medical supervision", "Organized clinical setting"],
     imageAlt: "Sterile dental instruments on a white tray",
   },
@@ -328,7 +334,7 @@ const en: Dict = {
     items: [
       {
         q: "Where are cases received?",
-        a: "Cases are received at Al Amal Dental Clinic. You can open the clinic location directly from the map on the site.",
+        a: "Cases are received at Wonderful Smile Dental Clinic. You can open the clinic location directly from the map on the site.",
       },
       {
         q: "Are the treatments free?",
@@ -354,13 +360,16 @@ const en: Dict = {
     instagram: "Instagram",
     facebook: "Facebook",
     location: "Location",
-    locationValue: "Al Amal Dental Clinic",
+    locationValue: "Wonderful Smile Dental Clinic",
   },
   form: {
     heading: "Send your inquiry",
     name: "Full name",
     phone: "Phone number",
+    email: "Email address",
     service: "Service type",
+    date: "Preferred date",
+    time: "Preferred time",
     servicePlaceholder: "Choose a service",
     message: "Write your inquiry",
     consent: "I agree to share my details for contact regarding the appointment.",
@@ -383,7 +392,7 @@ const en: Dict = {
   footer: {
     links: "Links",
     contact: "Contact",
-    rights: "© 2026 Al Amal Dental Clinic. All rights reserved.",
+    rights: "© 2026 Wonderful Smile Dental Clinic. All rights reserved.",
     disclaimer:
       "The information on this site is for introducing the services and for contact purposes, and does not replace a direct medical assessment.",
   },

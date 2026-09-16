@@ -1,11 +1,12 @@
 import { useLanguage } from "@/lib/i18n";
 import { Reveal } from "./Reveal";
 
-export function WhyChooseUs() {
+export function WhyChooseUs({ limit, homePage = false }: { limit?: number; homePage?: boolean }) {
   const { t } = useLanguage();
+  const items = limit ? t.why.items.slice(0, limit) : t.why.items;
 
   return (
-    <section id="why" className="scroll-mt-20 py-8 md:py-[60px] lg:py-20">
+    <section id="why" className={`scroll-mt-20 py-8 md:py-[60px] lg:py-20 ${homePage ? "home-why" : ""}`}>
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
           <h2 className="text-2xl font-extrabold text-foreground sm:text-4xl lg:text-[42px]">
@@ -14,7 +15,7 @@ export function WhyChooseUs() {
         </Reveal>
 
         <div className="mt-6 grid gap-3 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-          {t.why.items.map((item, i) => (
+          {items.map((item, i) => (
             <Reveal key={item.title} delay={i * 70}>
               <div className="h-full min-w-0 rounded-3xl border border-border bg-card p-4 sm:p-7">
                 <span className="font-latin text-2xl font-extrabold text-soft-foreground text-primary/50">
